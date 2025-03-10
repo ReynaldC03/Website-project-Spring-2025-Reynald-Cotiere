@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book/Movie Log</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">My Reading Log</h1>
+
+    <!-- Add Book Form -->
+    <form id="addForm" class="mb-3">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" required>
+      </div>
+      <div class="mb-3">
+        <label for="author" class="form-label">Author</label>
+        <input type="text" class="form-control" id="author">
+      </div>
+      <div class="mb-3">
+        <label for="genre" class="form-label">Genre</label>
+        <input type="text" class="form-control" id="genre">
+      </div>
+      <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-select" id="status">
+          <option value="to read">To Read</option>
+          <option value="in progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+      <div class="mb-3" id="ratingField" style="display: none;">
+        <label for="rating" class="form-label">Rating</label>
+        <div class="d-flex align-items-center">
+          <input type="number" class="form-control" id="rating" min="0" max="5" step="0.1" value="0" style="width: 80px;">
+          <span class="ms-2">/5</span>
+        </div>
+        <div class="text-danger" id="ratingError" style="display: none;">Rating must be between 0 and 5.</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Book</button>
+    </form>
+
+    <!-- Search and Filter Section -->
+    <div class="d-flex justify-content-between mb-3">
+      <input type="text" class="form-control me-3" id="searchInput" placeholder="Search by title, genre, or author" style="flex: 1;">
+      <!-- Filter -->
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Filter
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+          <li><a class="dropdown-item" href="#" data-filter="sortBy">Sort By</a></li>
+          <li><a class="dropdown-item" href="#" data-filter="groupBy">Group By</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sort By -->
+    <div class="mb-3" id="sortBySection" style="display: none;">
+      <label for="sortBy" class="form-label">Sort By</label>
+      <select class="form-select" id="sortBy">
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+        <option value="genre">Genre</option>
+        <option value="status">Status</option>
+      </select>
+    </div>
+
+    <!-- Group By -->
+    <div class="mb-3" id="groupBySection" style="display: none;">
+      <label for="groupBy" class="form-label">Group By</label>
+      <select class="form-select" id="groupBy">
+        <option value="none">None</option>
+        <option value="author">Author</option>
+        <option value="series">Series</option>
+      </select>
+    </div>
+
+    <!-- Create Group Section -->
+    <div class="mb-3">
+      <div class="d-flex mb-3">
+        <input type="text" class="form-control me-3" id="groupNameInput" placeholder="Enter group name">
+        <button class="btn btn-primary" id="createGroupBtn">Create Group</button>
+      </div>
+      <button class="btn btn-secondary mb-3" id="toggleGroupsBtn">Show Groups</button>
+      <div id="groupsSection" style="display: none;">
+        <ul class="list-group" id="groupList">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            No Group
+            <span class="badge bg-secondary" id="noGroupRating">0/5</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Celebration Message -->
+    <div id="celebration" class="alert alert-success text-center" style="display: none;">
+      🎉 Congratulations! You completed a book! 🎉
+    </div>
+
+    <!-- Table -->
+    <table class="table" id="bookTable">
+      <thead>
+        <tr>
+          <th>Cover</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th>Status</th>
+          <th>Rating</th>
+          <th>Actions</th>
+          <th>Group</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
