@@ -1,56 +1,207 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+/* Dark Gray Theme */
+:root {
+  --bg-dark: #1e1e1e;
+  --bg-card: #2d2d2d;
+  --bg-input: #3d3d3d;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --accent: #6bb5ff;
+  --border-color: #444;
+  --hover-bg: #3d3d3d; 
+  --hover-text: #ffffff; 
 }
+
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 
 h1 {
-  color: #333;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
+
+
+#addForm {
+  background-color: var(--bg-card);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  color: var(--text-secondary);
+}
+
+.form-control {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.form-control:focus {
+  background-color: var(--bg-input);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(107, 181, 255, 0.25);
+}
+
+/* Input Fields for Title, Author, and Genre */
+#title,
+#author,
+#genre {
+  background-color: #ffffff; 
+  color: #000000;
+  border: 1px solid var(--border-color); 
+}
+
+#title:focus,
+#author:focus,
+#genre:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(107, 181, 255, 0.25);
+}
+
+
+#searchInput,
+#groupNameInput {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary,
+#createGroupBtn,
+#toggleGroupsBtn,
+#filterDropdown {
+  background-color: var(--accent);
+  border: none;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+#createGroupBtn:hover,
+#toggleGroupsBtn:hover,
+#filterDropdown:hover {
+  background-color: #4a9eff;
+}
+
+/* Delete Buttons */
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
 
 .table {
-  background-color: white;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary {
-  background-color: #007bff;
-  border: none;
+.table th,
+.table td {
+  border-color: var(--border-color);
+  padding: 12px;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.table th {
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  font-weight: bold;
 }
 
-.alert-success {
-  margin-top: 20px;
+.table tbody tr:hover {
+  background-color: var(--hover-bg);
 }
 
-.star-rating {
-  font-size: 24px;
-  cursor: pointer;
+/* Dropdown Styles */
+.dropdown-menu {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
 }
 
-.star-rating span {
-  color: #ddd;
+.dropdown-item {
+  color: var(--text-primary);
 }
 
-.star-rating span.active {
-  color: #ffcc00;
+.dropdown-item:hover {
+  background-color: var(--hover-bg);
+  color: var(--hover-text);
 }
 
-.table .star-rating {
-  font-size: 18px; /* Smaller stars for the table */
+
+#groupsSection {
+  background-color: var(--bg-card);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
 }
 
 .list-group-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.list-group-item:hover {
+  background-color: var(--hover-bg);
 }
 
 .badge {
-  font-size: 14px;
-  padding: 5px 10px;
+  background-color: var(--accent);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+/* Celebration Message */
+.alert-success {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+  }
 }
